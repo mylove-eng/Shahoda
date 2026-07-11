@@ -3,387 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الحب الأول وانتي الاوله ي روحي ❤️</title>
-    <!-- تضمين مكتبة Tailwind CSS للتصميم الاحترافي -->
+    <title>365 يوم في حب شهودتي 👑</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- تضمين أيقونات FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- جوجل فونتس لخط قاهري عريض وفخم -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;1000&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #130106 0%, #300012 50%, #130106 100%);
+            background: radial-gradient(circle at center, #1a0b2e 0%, #0b0416 100%);
         }
         ::-webkit-scrollbar { display: none; }
-        /* نظام الصفحات الحقيقي: إخفاء الكل وإظهار النشط فقط */
-        .page {
+        .golden-text {
+            background: linear-gradient(to right, #ffe699, #d4af37, #aa7c11);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .overlay-page {
             display: none;
-            animation: slideUp 0.4s ease-in-out forwards;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 4, 22, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            animation: fadeIn 0.3s ease-in-out forwards;
         }
-        .page.active {
-            display: flex;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+        .heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            bottom: -50px;
+            animation: floatUp 4s linear forwards;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-110vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col justify-between overflow-x-hidden pb-24 select-none">
+<body class="text-white min-h-screen px-4 py-8 select-none flex flex-col justify-between max-w-md mx-auto relative overflow-x-hidden">
 
-    <!-- شريط الرأس العلوي الثابت والمطابق للفيديو -->
-    <header class="w-full flex justify-between items-center p-4 border-b border-pink-950/30 bg-black/40 backdrop-blur-md sticky top-0 z-50">
-        <div class="flex items-center gap-2">
-            <button class="text-xl text-pink-500"><i class="fa-solid fa-pause"></i></button>
-            <div>
-                <h1 class="text-sm font-bold text-pink-200 tracking-wide">Shahoda & Yasso</h1>
-                <p class="text-[10px] text-gray-400">الحب الأول وانتي الاوله ي روحي</p>
+    <div class="text-center mt-4">
+        <div class="inline-block animate-bounce mb-3 text-2xl text-amber-400">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+        <h1 class="text-3xl font-black golden-text">حكايتنا كملت سنة ⏳💍</h1>
+        <p class="text-amber-300 text-sm mt-2 animate-pulse font-bold">❤️ 365 يوم حب وذكريات ولسه البداية ❤️</p>
+        <p class="text-[10px] text-purple-300/60 mt-2 tracking-widest font-medium">14 يوليو - الساعة 9:00 م | اليوم الذي اكتملت فيه دنيتي بـ Shahoda</p>
+    </div>
+
+    <div class="my-6 bg-gradient-to-b from-purple-950/20 to-black/40 border border-amber-500/20 rounded-3xl p-6 text-center shadow-2xl relative overflow-hidden backdrop-blur-md">
+        <p class="text-xs text-gray-400 mb-4 font-bold">عمرنا سوا ولحظاتنا بالثانية:</p>
+        <div class="grid grid-cols-3 gap-2 text-center">
+            <div class="bg-purple-950/30 border border-purple-500/10 rounded-2xl p-3">
+                <span class="block text-2xl font-black text-amber-400" id="live-days">0</span>
+                <span class="text-[10px] text-gray-400">أيام</span>
+            </div>
+            <div class="bg-purple-950/30 border border-purple-500/10 rounded-2xl p-3">
+                <span class="block text-2xl font-black text-amber-400" id="live-hours">0</span>
+                <span class="text-[10px] text-gray-400">ساعات</span>
+            </div>
+            <div class="bg-purple-950/30 border border-purple-500/10 rounded-2xl p-3">
+                <span class="block text-xl font-black text-purple-300 animate-pulse" id="live-mins">0</span>
+                <span class="text-[10px] text-gray-400">دقيقة حب</span>
             </div>
         </div>
-        <div class="text-pink-500 text-lg animate-pulse"><i class="fa-solid fa-heart"></i></div>
-    </header>
+        <div class="mt-4 pt-4 border-t border-purple-500/10">
+            <span class="text-[10px] text-amber-400/70 font-mono block mb-1" id="live-secs-pure">إجمالي الثواني: 0</span>
+            <p class="text-[11px] text-amber-200/90 leading-relaxed font-semibold">"كل سنة وانتي النور اللي منور حياتي وربنا يخليكي ليا وما يحرمنيش منك أبداً" ❤️</p>
+        </div>
+    </div>
 
-    <!-- المحتوى الرئيسي لتطبيقات الصفحات المنفصلة -->
-    <main class="flex-1 w-full max-w-md mx-auto px-4 py-6 flex flex-col justify-start">
-        
-        <!-- ================= صفحة 1: العدادات والمنزل (Home) ================= -->
-        <section id="page-home" class="page active flex-col gap-6 w-full">
-            <div class="bg-gradient-to-b from-pink-950/30 to-black/50 rounded-3xl p-6 border border-pink-500/10 shadow-2xl text-center">
-                <span class="bg-pink-500/10 text-pink-400 text-xs px-3 py-1 rounded-full border border-pink-500/20"><i class="fa-solid fa-star text-[10px]"></i> هدية معمولة مخصوص</span>
-                <h2 class="text-xl font-black text-pink-100 mt-4">الحب الأول وانتي الاوله ي روحي ❤️</h2>
-                <p class="text-gray-400 text-xs mt-2 leading-relaxed">افتحي الهدية وشوفي حكايتنا منقسمة كأنها تطبيق صغير معمول لكي بس، متقسم لصفحات وجوا كل صفحة حكاية.</p>
-            </div>
-
-            <!-- كروت البيانات التاريخية والأغنية -->
-            <div class="grid grid-cols-2 gap-3 text-center">
-                <div class="bg-black/40 border border-pink-950/50 rounded-2xl p-3 flex flex-col items-center justify-center">
-                    <i class="fa-solid fa-calendar-days text-pink-500 mb-1 text-base"></i>
-                    <span class="text-xs font-bold text-pink-100">من 15 يوليو 2025</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">بداية الحكاية اللي بتكبر كل يوم</span>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-2xl p-3 flex flex-col items-center justify-center">
-                    <i class="fa-solid fa-music text-pink-500 mb-1 text-base"></i>
-                    <span class="text-xs font-bold text-pink-100">نور عيني</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">الأغنية اللي بتوصفنا</span>
+    <div class="flex flex-col gap-3 mb-6">
+        <div onclick="openOverlay('reasons-page')" class="bg-gradient-to-r from-red-500/20 to-black/40 border border-red-500/30 rounded-2xl p-4 cursor-pointer hover:border-red-500/50 transition-all duration-300 flex items-center justify-between h-20">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-heart text-red-400 text-xl animate-pulse"></i>
+                <div class="text-right">
+                    <h3 class="text-xs font-bold text-red-300">أشياء بحبها في شهودتي ❤️</h3>
+                    <p class="text-[9px] text-gray-400 mt-0.5">اضغطي لرؤية 50 سبب يخلوكي مميزة في قلبي</p>
                 </div>
             </div>
+            <i class="fa-solid fa-chevron-left text-gray-500 text-xs"></i>
+        </div>
 
-            <!-- العداد المباشر الحقيقي بالثواني من يوم 15/7/2025 -->
-            <div class="bg-black/30 p-4 rounded-2xl border border-pink-950/40">
-                <p class="text-xs text-gray-400 mb-3 text-right">منذ أن بدأت القصة (عداد الحب):</p>
-                <div class="grid grid-cols-4 gap-2 text-center">
-                    <div class="bg-pink-950/40 border border-pink-500/20 rounded-xl p-2.5">
-                        <span id="years" class="block text-xl font-bold text-pink-400">0</span>
-                        <span class="text-[10px] text-gray-400">سنة</span>
-                    </div>
-                    <div class="bg-pink-950/40 border border-pink-500/20 rounded-xl p-2.5">
-                        <span id="months" class="block text-xl font-bold text-pink-400">0</span>
-                        <span class="text-[10px] text-gray-400">شهر</span>
-                    </div>
-                    <div class="bg-pink-950/40 border border-pink-500/20 rounded-xl p-2.5">
-                        <span id="days" class="block text-xl font-bold text-pink-400">0</span>
-                        <span class="text-[10px] text-gray-400">يوم</span>
-                    </div>
-                    <div class="bg-pink-950/40 border border-pink-500/20 rounded-xl p-2.5">
-                        <span id="seconds" class="block text-xl font-bold text-pink-300 animate-pulse">0</span>
-                        <span class="text-[10px] text-gray-400">ثانية</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- عداد عيد الميلاد التنازلي الشيك -->
-            <div class="bg-gradient-to-l from-pink-950/20 to-black/40 p-4 rounded-2xl border border-pink-950/40 text-center">
-                <p class="text-xs text-pink-300 font-bold mb-2"><i class="fa-solid fa-cake-candles text-[11px]"></i> الوقت المتبقي على عيد ميلاد Shahoda الملكة:</p>
-                <div id="birthday-counter" class="text-sm font-bold text-gray-200 tracking-wide">جاري الحساب...</div>
-            </div>
-        </section>
-
-        <!-- ================= صفحة 2: وعودي (Promises) ================= -->
-        <section id="page-promises" class="page flex-col gap-4 w-full">
-            <h3 class="text-lg font-bold text-pink-300 text-right">وعودي ليكي <span class="text-xs text-gray-400 font-normal">(مش كلام ده عهد)</span></h3>
-
-            <div class="bg-black/40 border border-pink-950/50 p-4 rounded-xl text-right flex items-start gap-3 transition-all duration-300 hover:border-pink-500/30">
-                <div class="p-2 bg-pink-950/50 rounded-lg text-pink-500"><i class="fa-solid fa-handshake-angle text-sm"></i></div>
+        <div class="grid grid-cols-2 gap-3">
+            <div onclick="openOverlay('view-letter')" class="bg-gradient-to-br from-purple-950/40 to-black/40 border border-purple-500/10 rounded-2xl p-4 cursor-pointer hover:border-amber-500/30 transition-all duration-300 flex flex-col justify-between h-28">
+                <i class="fa-solid fa-envelope-open text-amber-300 text-base"></i>
                 <div>
-                    <h4 class="font-bold text-sm text-pink-200">هنفضل سندك</h4>
-                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">في الفرح والزعل وكل لحظة محتاجة فيها حد جنبك.</p>
+                    <h3 class="text-xs font-bold text-gray-200">الجواب والرسالة الكاملة</h3>
+                    <p class="text-[9px] text-gray-400 mt-1">قصتنا، وعودنا، ومكانتكِ بقلبي 👑</p>
                 </div>
             </div>
-
-            <div class="bg-black/40 border border-pink-950/50 p-4 rounded-xl text-right flex items-start gap-3 transition-all duration-300 hover:border-pink-500/30">
-                <div class="p-2 bg-pink-950/50 rounded-lg text-pink-500"><i class="fa-solid fa-shield-heart text-sm"></i></div>
+            <div onclick="openOverlay('music-page')" class="bg-gradient-to-br from-pink-950/40 to-black/40 border border-pink-500/20 rounded-2xl p-4 cursor-pointer hover:border-pink-500/40 transition-all duration-300 flex flex-col justify-between h-28">
+                <i class="fa-solid fa-music text-pink-400 text-base"></i>
                 <div>
-                    <h4 class="font-bold text-sm text-pink-200">هكون أمانك</h4>
-                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">راحتك واطمئنانك أهم حاجة عندي دايماً.</p>
+                    <h3 class="text-xs font-bold text-gray-200">أغاني شهودتي المفضلة</h3>
+                    <p class="text-[9px] text-gray-400 mt-1">الموسيقى اللي بنحبها سوا 🎵</p>
                 </div>
             </div>
+        </div>
 
-            <div class="bg-black/40 border border-pink-950/50 p-4 rounded-xl text-right flex items-start gap-3 transition-all duration-300 hover:border-pink-500/30">
-                <div class="p-2 bg-pink-950/50 rounded-lg text-pink-500"><i class="fa-solid fa-infinity text-sm"></i></div>
-                <div>
-                    <h4 class="font-bold text-sm text-pink-200">حبنا ملوش نهاية</h4>
-                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">كل يوم بيعدي بيزود قيمتك في قلبي أكتر.</p>
+        <div onclick="openOverlay('promises-page')" class="bg-gradient-to-r from-amber-500/10 to-purple-600/20 border border-amber-500/30 rounded-2xl p-4 cursor-pointer hover:border-amber-500/50 transition-all duration-300 flex items-center justify-between h-20 mt-1">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-handshake text-amber-400 text-xl animate-pulse"></i>
+                <div class="text-right">
+                    <h3 class="text-xs font-bold text-amber-300">وعودي ليكي ❤️</h3>
+                    <p class="text-[9px] text-gray-400 mt-0.5">العهود اللي بيني وبينك والوعود الصادقة لقلبك</p>
                 </div>
             </div>
+            <i class="fa-solid fa-chevron-left text-gray-500 text-xs"></i>
+        </div>
+    </div>
 
-            <div class="bg-black/40 border border-pink-950/50 p-4 rounded-xl text-right flex items-start gap-3 transition-all duration-300 hover:border-pink-500/30">
-                <div class="p-2 bg-pink-950/50 rounded-lg text-pink-500"><i class="fa-solid fa-heart text-sm"></i></div>
-                <div>
-                    <h4 class="font-bold text-sm text-pink-200">هافِظ على ضحكتك</h4>
-                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">مش عايز أشوفك غير مبسوطة دايماً.</p>
+    <div class="text-center text-[10px] text-gray-500 pb-4">صُنع بحب من Yasso إلى Shahoda الملكة 💍</div>
+
+
+    <div id="promises-page" class="overlay-page p-6 overflow-y-auto flex flex-col justify-between">
+        <div class="flex flex-col gap-4 text-right mt-4">
+            <div class="flex justify-between items-center border-b border-purple-500/10 pb-4">
+                <h2 class="text-lg font-bold golden-text"><i class="fa-solid fa-handshake ml-2"></i>وعودي ليكي ❤️</h2>
+                <button onclick="closeOverlay('promises-page')" class="text-gray-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="text-xs text-gray-200 leading-relaxed space-y-4 max-h-[65vh] overflow-y-auto px-1 pb-4">
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني أحاول أبقى أحسن نسخة من نفسي كل يوم</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني أتعلم من غلطاتي وما أكررش نفس الأخطاء</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني أسمعك وأفهمك قبل ما أحكم على أي موقف</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني أحاظ على احترامك ومكانتك عندي</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني أقلل العصبية وما أخليش الزعل يخليني أقول كلام يضايقك</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني ما أهينكيش ولا أجرحك بكلمة</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني أفضل سند ليكي وقت الفرح ووقت الزعل</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني أكون صريح معاكي دايمًا</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إني أحافظ على ذكرياتنا وأيامنا الحلوة</p>
+                </div>
+                <div class="bg-purple-950/30 p-3 rounded-xl border border-purple-500/20 flex items-start gap-2">
+                    <span class="text-amber-400 text-base">✨</span>
+                    <p>أوعدك إن حبي ليكي يفضل حقيقي وصادق</p>
                 </div>
             </div>
+        </div>
+        <button onclick="closeOverlay('promises-page')" class="w-full bg-gradient-to-r from-purple-900 to-amber-600 text-white font-bold text-xs py-3 rounded-xl mb-4">العودة للرئيسية</button>
+    </div>
 
-            <div class="bg-black/40 border border-pink-950/50 p-4 rounded-xl text-right flex items-start gap-3 transition-all duration-300 hover:border-pink-500/30">
-                <div class="p-2 bg-pink-950/50 rounded-lg text-pink-500"><i class="fa-solid fa-star text-sm"></i></div>
-                <div>
-                    <h4 class="font-bold text-sm text-pink-200">هخليكي أهم أولوياتي</h4>
-                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">أي حاجة في الدنيا بعد راحتك مش مهمة.</p>
-                </div>
+    <div id="reasons-page" class="overlay-page p-6 overflow-y-auto flex flex-col justify-between">
+        <div class="flex flex-col gap-4 text-right mt-4">
+            <div class="flex justify-between items-center border-b border-purple-500/10 pb-4">
+                <h2 class="text-lg font-bold golden-text"><i class="fa-solid fa-heart ml-2 text-red-400"></i>50 سبب يخليني أعشقك</h2>
+                <button onclick="closeOverlay('reasons-page')" class="text-gray-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
-
-            <div class="bg-black/40 border border-pink-950/50 p-4 rounded-xl text-right flex items-start gap-3 transition-all duration-300 hover:border-pink-500/30">
-                <div class="p-2 bg-pink-950/50 rounded-lg text-pink-500"><i class="fa-solid fa-heart-circle-check text-sm"></i></div>
-                <div>
-                    <h4 class="font-bold text-sm text-pink-200">هفضل صادق معاكي</h4>
-                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">مفيش أي حاجة بينا غير الوضوح والثقة.</p>
+            <div id="reasons-container" class="text-xs text-gray-200 leading-relaxed space-y-2.5 max-h-[65vh] overflow-y-auto px-1 pb-4">
                 </div>
+        </div>
+        <button onclick="closeOverlay('reasons-page')" class="w-full bg-gradient-to-r from-red-600 to-purple-600 text-white font-bold text-xs py-3 rounded-xl mb-4">العودة للرئيسية</button>
+    </div>
+
+    <div id="music-page" class="overlay-page p-6 overflow-y-auto flex flex-col justify-between">
+        <div class="flex flex-col gap-5 text-right mt-4">
+            <div class="flex justify-between items-center border-b border-pink-500/20 pb-4">
+                <h2 class="text-lg font-bold golden-text">
+                    <i class="fa-solid fa-music ml-2 text-pink-400"></i>
+                    أغاني شهودتي المفضلة 🎵
+                </h2>
+                <button onclick="closeOverlay('music-page')" class="text-gray-400 text-xl">✖</button>
             </div>
-        </section>
-
-        <!-- ================= صفحة 3: رسايل (Messages) ================= -->
-        <section id="page-messages" class="page flex-col gap-4 w-full">
-            <h3 class="text-lg font-bold text-pink-300 text-right">رسائل صغيرة <span class="text-xs text-gray-400 font-normal">(اضغطي على أي كارت)</span></h3>
-            
-            <div class="grid grid-cols-1 gap-3">
-                <div class="card bg-pink-950/20 border border-pink-500/10 p-4 rounded-xl cursor-pointer transition-all duration-300 flex justify-between items-center group hover:border-pink-500/30" onclick="revealCard(this, 'إنتي أجمل نعمة في حياتي يا Shahoda ❤️')">
-                    <span class="text-sm font-medium text-pink-200 card-text">افتحيني ✨</span>
-                    <i class="fa-solid fa-envelope text-pink-400 transition-transform group-hover:rotate-6"></i>
-                </div>
-                <div class="card bg-pink-950/20 border border-pink-500/10 p-4 rounded-xl cursor-pointer transition-all duration-300 flex justify-between items-center group hover:border-pink-500/30" onclick="revealCard(this, 'وجودك بيخلي الدنيا منورة دايماً ✨')">
-                    <span class="text-sm font-medium text-pink-200 card-text">افتحيني 👑</span>
-                    <i class="fa-solid fa-envelope text-pink-400 transition-transform group-hover:rotate-6"></i>
-                </div>
-                <div class="card bg-pink-950/20 border border-pink-500/10 p-4 rounded-xl cursor-pointer transition-all duration-300 flex justify-between items-center group hover:border-pink-500/30" onclick="revealCard(this, 'ملكة قلب Yasso للأبد 💍')">
-                    <span class="text-sm font-medium text-pink-200 card-text">افتحيني ⚡</span>
-                    <i class="fa-solid fa-envelope text-pink-400 transition-transform group-hover:rotate-6"></i>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= صفحة 4: ستوري الحب والاهتمام والغيرة (عيوني) ================= -->
-        <section id="page-story" class="page flex-col gap-5 w-full text-right">
-            <h3 class="text-lg font-bold text-pink-300 flex items-center gap-2 justify-start">
-                <i class="fa-solid fa-eye text-sm text-pink-500"></i> جوة قلبي ليكي كلام كبير..
-            </h3>
-
-            <div class="bg-gradient-to-r from-pink-950/40 to-black/50 border border-pink-500/20 rounded-2xl p-5 shadow-xl flex flex-col gap-2">
-                <span class="text-red-400 text-xs font-bold flex items-center gap-1">
-                    <i class="fa-solid fa-fire text-[10px]"></i> غيرة هادية ومحترمة:
-                </span>
-                <p class="text-xs text-gray-200 leading-relaxed font-medium">
-                    أنا ببقى مطمن أكتر لما أعرف إنك بخير ومبسوطه، ووجودك مهم جداً عندي.
-                </p>
-            </div>
-
-            <!-- الـ 12 نقطة منسقة في تصميم شبكي متناسق جداً للموبايل -->
-            <div class="grid grid-cols-2 gap-2 text-right">
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">١.</span> ضحكتك أول حاجة بتفرّحني في يومي ❤️</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">٢.</span> صوتك بيهدّي أي توتر جوايا</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">٣.</span> وجودك في حياتي فرق معايا كتير</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">٤.</span> بحس بالأمان لما أكلمك</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">٥.</span> كل تفصيلة فيك ليها قيمة عندي</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">٦.</span> وجودك بيخليني أحسن</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">٧.</span> كلامك دايماً بيفرق معايا</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">٨.</span> بحب طريقة تفكيرك</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">٩.</span> بتعلم منك كل يوم حاجة</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">١٠.</span> وجودك بيخليني أهدى</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02]">
-                    <p class="text-[11px] text-gray-300 leading-normal"><span class="text-pink-400 font-bold">١١.</span> إنتي جزء جميل من يومي</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-3 flex items-center transition-transform duration-200 hover:scale-[1.02] col-span-2 text-center justify-center">
-                    <p class="text-[11px] text-pink-300 font-bold leading-normal"><span class="text-pink-400 font-bold">١٢.</span> ومهما حصل إنتي ليكي مكان كبير عندي ✨</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= صفحة 5: عيد الميلاد (Birthday)  ================= -->
-        <section id="page-photos" class="page flex-col gap-5 w-full text-right">
-            <h3 class="text-lg font-bold text-pink-300 text-right">
-                عيد ميلادك 🎂 <span class="text-xs text-gray-400 font-normal">(19 / 6)</span>
-            </h3>
-
-            <div class="bg-gradient-to-r from-pink-950/40 to-black/50 border border-pink-500/20 rounded-2xl p-5 shadow-xl text-center">
-                <i class="fa-solid fa-cake-candles text-pink-400 text-3xl mb-3 animate-bounce"></i>
-                <h4 class="text-pink-200 font-bold text-lg">كل سنة وإنتي أجمل حاجة في الدنيا ❤️</h4>
-                <p class="text-xs text-gray-300 mt-2 leading-relaxed">
-                    في يوم 19/6 اتولدت أجمل ضحكة وأغلى قلب.. وجودك في الدنيا نعمة كبيرة جدًا، وكل سنة وإنتي طيبة يا Shahoda ✨
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 gap-3">
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-4">
-                    <p class="text-sm text-pink-200 font-bold">🎁 وعد خاص ليكي</p>
-                    <p class="text-xs text-gray-300 mt-1">هفضل دايماً أفرّحك في كل سنة زي ما بفرح بوجودك في حياتي.</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-4">
-                    <p class="text-sm text-pink-200 font-bold">💖 أمنية ليكي</p>
-                    <p class="text-xs text-gray-300 mt-1">أتمنى كل سنة تكوني أسعد وأقرب للي نفسك فيه.</p>
-                </div>
-                <div class="bg-black/40 border border-pink-950/50 rounded-xl p-4">
-                    <p class="text-sm text-pink-200 font-bold">🌟 رسالة اليوم</p>
-                    <p class="text-xs text-gray-300 mt-1">إنتي مش يوم عيد ميلاد.. إنتي عيد بحد ذاته في حياتي.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= صفحة 6: الرسالة الكبيرة والختام (Letter) ================= -->
-        <section id="page-letter" class="page flex-col gap-4 text-right bg-gradient-to-br from-pink-950/30 to-black/60 p-6 rounded-2xl border border-pink-500/20 w-full shadow-2xl">
-            <h3 class="text-xl font-bold text-pink-300 flex items-center gap-1"><i class="fa-solid fa-heart text-xs text-pink-500"></i> ملكة قلبي Shahoda..</h3>
-            <p class="text-xs text-gray-300 leading-relaxed font-light">
-                حبيبتي "Shahoda".. كل كلمة هنا وكل صورة حطيتها جزء صغير من اللي حاسه بيكي، إنتي مش بس حبيبتي، إنتي بنتي وصاحبتي وأماني وعيوني ونور حياتي كله. هفضل دايماً جنبك وسندك، وهيفضل حبنا بيكبر كل يوم عن اللي قبله. Yasso دايماً جنبك وربنا يخليكي ليا يا أغلى من عمري كله.
+            <p class="text-xs text-gray-300 text-center leading-relaxed">
+                الأغاني اللي كل ما أسمعها أفتكر ضحكتك وكلامنا وذكرياتنا ❤️
             </p>
-            <div class="border-t border-pink-500/10 pt-4 mt-2 text-center">
-                <p class="text-sm font-bold text-pink-400 tracking-wider uppercase animate-bounce">بحبك يا Shahoda.. للأبد ❤️</p>
+            <div class="bg-gradient-to-r from-pink-900/40 to-purple-900/40 border border-pink-500/30 rounded-3xl p-4 shadow-xl">
+                <div class="flex justify-between items-center mb-3">
+                    <div>
+                        <h3 class="font-bold text-white text-sm">حكايتنا ❤️</h3>
+                        <p class="text-[10px] text-gray-400">الأغنية اللي شبه قصتنا</p>
+                    </div>
+                    <i class="fa-solid fa-heart text-pink-400 text-2xl animate-pulse"></i>
+                </div>
+                <audio controls id="song1" class="w-full">
+                    <source src="songs/shahoda1.mp3" type="audio/mp3">
+                </audio>
             </div>
-        </section>
+            <div class="bg-gradient-to-r from-purple-900/40 to-black/40 border border-purple-500/30 rounded-3xl p-4 shadow-xl">
+                <div class="flex justify-between items-center mb-3">
+                    <div>
+                        <h3 class="font-bold text-white text-sm">أغنيتنا المفضلة 💜</h3>
+                        <p class="text-[10px] text-gray-400">ذكرياتنا وأيامنا الحلوة</p>
+                    </div>
+                    <i class="fa-solid fa-music text-purple-400 text-2xl"></i>
+                </div>
+                <audio controls class="w-full">
+                    <source src="songs/shahoda2.mp3" type="audio/mp3">
+                </audio>
+            </div>
+            <div class="bg-gradient-to-r from-amber-900/30 to-black/40 border border-amber-500/30 rounded-3xl p-4 shadow-xl">
+                <div class="flex justify-between items-center mb-3">
+                    <div>
+                        <h3 class="font-bold text-white text-sm">أول أغنية جمعتنا 👑</h3>
+                        <p class="text-[10px] text-gray-400">ذكرى مش هتتكرر</p>
+                    </div>
+                    <i class="fa-solid fa-crown text-amber-400 text-2xl"></i>
+                </div>
+                <audio controls class="w-full">
+                    <source src="songs/shahoda3.mp3" type="audio/mp3">
+                </audio>
+            </div>
+        </div>
+        <button onclick="closeOverlay('music-page')" class="w-full bg-gradient-to-r from-pink-600 to-purple-700 text-white font-bold text-xs py-3 rounded-xl mb-4">الرجوع للرئيسية ❤️</button>
+    </div>
 
-    </main>
+    <div id="view-letter" class="overlay-page p-6 overflow-y-auto flex flex-col justify-between">
+        <div class="flex flex-col gap-4 text-right mt-4">
+            <div class="flex justify-between items-center border-b border-purple-500/10 pb-4">
+                <h2 class="text-lg font-bold golden-text">الجواب الكامل لشهودتي ❤️</h2>
+                <button onclick="closeOverlay('view-letter')" class="text-gray-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="text-xs text-gray-200 leading-relaxed space-y-3 font-light max-h-[65vh] overflow-y-auto px-1 pb-4">
+                <p class="font-bold text-amber-300 text-sm">شهودتي روح قلبي وحياتي ونور عيني ❤️،</p>
+                <p>وأخيراً وصلنا لليوم اللي بيكمل سنة كاملة وإحنا مع بعض، سنة كاملة من الذكريات والضحك والكلام الحلو.</p>
+                <p class="bg-gradient-to-l from-purple-950/50 to-black/30 p-3 rounded-xl border-r-4 border-red-500 my-2 text-gray-300">يمكن زعلنا أوقات واختلفنا أوقات، لكن عمري ما تخيلت حياتي من غيرك؛ لأنك راحتي وأماني وسعادتي.</p>
+                <p>كل سنة وانتي حبيبتي وربنا يخليكي ليا وما يحرمنيش منك أبداً ❤️🫂✨</p>
+            </div>
+        </div>
+        <button onclick="closeOverlay('view-letter')" class="w-full bg-gradient-to-r from-purple-900 to-amber-600 text-white font-bold text-xs py-3 rounded-xl mb-4">العودة للرئيسية</button>
+    </div>
 
-    <!-- شريط التنقل السفلي الاحترافي -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur-xl border-t border-pink-950/40 py-2.5 z-50 flex justify-around items-center max-w-md mx-auto rounded-t-2xl shadow-2xl">
-        <button onclick="navigateToPage('page-home', this)" class="nav-btn flex flex-col items-center text-pink-500 transition-transform active:scale-95">
-            <i class="fa-solid fa-house text-base"></i>
-            <span class="text-[9px] mt-1 font-bold">الرئيسية</span>
-        </button>
-        <button onclick="navigateToPage('page-promises', this)" class="nav-btn flex flex-col items-center text-gray-400 transition-transform active:scale-95">
-            <i class="fa-solid fa-hand-holding-heart text-base"></i>
-            <span class="text-[9px] mt-1 font-bold">وعودي</span>
-        </button>
-        <button onclick="navigateToPage('page-messages', this)" class="nav-btn flex flex-col items-center text-gray-400 transition-transform active:scale-95">
-            <i class="fa-solid fa-envelope-open-text text-base"></i>
-            <span class="text-[9px] mt-1 font-bold">رسايل</span>
-        </button>
-        <button onclick="navigateToPage('page-story', this)" class="nav-btn flex flex-col items-center text-gray-400 transition-transform active:scale-95">
-            <i class="fa-solid fa-eye text-base"></i>
-            <span class="text-[9px] mt-1 font-bold">عيوني</span>
-        </button>
-        <button onclick="navigateToPage('page-photos', this)" class="nav-btn flex flex-col items-center text-gray-400 transition-transform active:scale-95">
-            <i class="fa-solid fa-cake-candles text-base"></i>
-            <span class="text-[9px] mt-1 font-bold">عيد ميلادك</span>
-        </button>
-        <button onclick="navigateToPage('page-letter', this)" class="nav-btn flex flex-col items-center text-gray-400 transition-transform active:scale-95">
-            <i class="fa-solid fa-pen-nib text-base"></i>
-            <span class="text-[9px] mt-1 font-bold">الرسالة</span>
-        </button>
-    </nav>
+    <div id="anniversary-popup" class="hidden fixed inset-0 bg-black/95 backdrop-blur-2xl z-[200] flex flex-col justify-center items-center p-6 text-center">
+        <div class="bg-gradient-to-b from-purple-900/40 to-purple-950/90 p-8 rounded-3xl border border-amber-500/40 max-w-sm shadow-2xl space-y-4">
+            <div class="text-4xl text-amber-400 animate-bounce"><i class="fa-solid fa-gift"></i></div>
+            <h2 class="text-2xl font-black golden-text">كل سنة وإحنا سوا يا عمري! ❤️</h2>
+            <p class="text-xs text-gray-300 leading-relaxed">مبروك يا شهدتي ❤️ كملنا سنة كاملة مع بعض. مرت سنة وأنتِ داخل قلبي وروحي، وعقبال مليون سنة وإحنا دايماً سند لفس</p>
+            <button onclick="closeAnniversaryPopup()" class="w-full bg-gradient-to-r from-amber-500 to-purple-600 text-white font-bold text-xs py-3 rounded-xl mt-4">بحبك يا ياسو ❤️</button>
+        </div>
+    </div>
 
-    <!-- الجافا سكريبت لتشغيل التنقل وحساب العدادات بدقة -->
+    <div id="password-screen" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[300] flex flex-col justify-center items-center p-6 text-center">
+        <div class="bg-gradient-to-b from-purple-950/90 to-black/90 p-6 rounded-3xl border border-purple-500/30 max-w-xs shadow-2xl space-y-4">
+            <div class="text-3xl text-purple-400 animate-pulse"><i class="fa-solid fa-lock"></i></div>
+            <p class="text-xs text-gray-300 leading-relaxed">عندك سؤال واحد بس 😉<br>فاضل كام يوم ونقفل سنة؟<br><br>اكتبي الإجابة وادخلي ❤️</p>
+            <input id="passwordInput" type="number" placeholder="اكتبي الباسورد" class="w-full p-3 rounded-xl bg-black/50 border border-purple-500/30 text-center text-white outline-none">
+            <button onclick="checkPassword()" class="w-full mt-4 bg-gradient-to-r from-pink-500 to-purple-600 py-3 rounded-xl font-bold text-sm">دخول ❤️</button>
+            <p id="errorMsg" class="text-red-400 text-xs mt-3 hidden">الباسورد غير صحيح</p>
+        </div>
+    </div>
+
     <script>
-        // دالة التنقل المنفصلة لإخفاء وإظهار الصفحات
-        function navigateToPage(pageId, element) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active'));
-            
-            document.getElementById(pageId).classList.add('active');
-            
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('text-pink-500');
-                btn.classList.add('text-gray-400');
-            });
-            
-            element.classList.remove('text-gray-400');
-            element.classList.add('text-pink-500');
+        function openOverlay(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeOverlay(id) { document.getElementById(id).style.display = 'none'; }
+        function closeAnniversaryPopup() { document.getElementById('anniversary-popup').classList.add('hidden'); }
+
+        const startDate = new Date('2025-07-14T21:00:00');
+        let hasCelebrated = false;
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 15 + 20) + 'px';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
         }
 
-        // كشف رسايل الكروت التفاعلية
-        function revealCard(cardElement, secretMessage) {
-            cardElement.classList.remove('bg-pink-950/20', 'border-pink-500/10');
-            cardElement.classList.add('bg-pink-600/10', 'border-pink-500/60');
-            const textSpan = cardElement.querySelector('.card-text');
-            textSpan.textContent = secretMessage;
-            textSpan.classList.add('text-pink-300', 'font-bold');
-            const icon = cardElement.querySelector('i');
-            icon.className = 'fa-solid fa-envelope-open text-pink-300';
-        }
-
-        // العداد التصاعدي المباشر الدقيق (تاريخ البداية 15 يوليو 2025)
-        const startDate = new Date('2025-07-15T00:00:00');
-        
-        function updateLoveCounter() {
+        function updateLiveCounters() {
             const now = new Date();
-            const differenceInMs = now - startDate;
+            const diffInMs = now - startDate;
+            document.getElementById('live-days').textContent = Math.floor(diffInMs / (1000*60*60*24)).toLocaleString();
+            document.getElementById('live-hours').textContent = Math.floor(diffInMs / (1000*60*60)).toLocaleString();
+            document.getElementById('live-mins').textContent = Math.floor(diffInMs / (1000*60)).toLocaleString();
+            document.getElementById('live-secs-pure').textContent = "إجمالي الثواني: " + Math.floor(diffInMs / 1000).toLocaleString();
 
-            let diffYears = now.getFullYear() - startDate.getFullYear();
-            let diffMonths = now.getMonth() - startDate.getMonth();
-            let diffDays = now.getDate() - startDate.getDate();
-
-            if (diffDays < 0) {
-                diffMonths--;
-                const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-                diffDays += previousMonth.getDate();
+            if (now.getFullYear() === 2026 && now.getMonth() === 6 && now.getDate() === 14 && now.getHours() >= 21 && !hasCelebrated) {
+                document.getElementById('anniversary-popup').classList.remove('hidden');
+                for (let i = 0; i < 50; i++) { setTimeout(createHeart, i * 150); }
+                hasCelebrated = true;
             }
-            if (diffMonths < 0) {
-                diffYears--;
-                diffMonths += 12;
+        }
+        setInterval(updateLiveCounters, 1000);
+        updateLiveCounters();
+
+        function checkPassword() {
+            const today = new Date();
+            const anniversary = new Date('2026-07-14');
+            const diffTime = anniversary - today;
+            const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const enteredPassword = document.getElementById("passwordInput").value;
+
+            if (enteredPassword == daysLeft) {
+                document.getElementById("password-screen").style.display = "none";
+            } else {
+                document.getElementById("errorMsg").classList.remove("hidden");
             }
-
-            const diffSeconds = Math.floor((differenceInMs / 1000) % 60);
-
-            document.getElementById('years').textContent = diffYears;
-            document.getElementById('months').textContent = diffMonths;
-            document.getElementById('days').textContent = diffDays;
-            document.getElementById('seconds').textContent = diffSeconds;
         }
 
-        // عداد عيد الميلاد التنازلي التلقائي (19 يونيو)
-        function updateBirthdayCounter() {
-            const now = new Date();
-            let bdate = new Date(now.getFullYear(), 5, 19, 0, 0, 0); 
-            if (now > bdate) {
-                bdate = new Date(now.getFullYear() + 1, 5, 19, 0, 0, 0);
-            }
-            const diff = bdate - now;
-            const days = Math.floor(diff / 86400000);
-            const hrs = Math.floor(diff / 3600000) % 24;
-            const mins = Math.floor(diff / 60000) % 60;
-            const secs = Math.floor(diff / 1000) % 60;
-            
-            document.getElementById('birthday-counter').innerHTML = `${days} يوم و ${hrs} ساعة و ${mins} دقيقة و ${secs} ثانية`;
-        }
+        window.addEventListener("load", () => {
+            const today = new Date();
+            const anniversary = new Date('2026-07-14');
+            const diffTime = anniversary - today;
+            const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            if (daysLeft <= 0) { document.getElementById("password-screen").style.display = "none"; }
+        });
 
-        // تشغيل المحركات والمزامنة كل ثانية بانتظام
-        setInterval(() => {
-            updateLoveCounter();
-            updateBirthdayCounter();
-        }, 1000);
-        
-        updateLoveCounter();
-        updateBirthdayCounter();
+        const reasonsList = ["ضحكتك اللي بتنور يومي", "طريقتك في الاهتمام بيا وبكل تفاصيلي", "حنّيتك اللي ملهاش مثيل في الدنيا", "صبرك عليا في أوقات عصبيتي", "جمال عينيكي اللي بسرح فيه دايماً", "دعمك وتشجيعك ليا في كل خطوة", "صوتك اللي بيريح قلبي ونفسيتي", "جدعنتك وقوفك جنبي زي الراجل في الضهر", "طريقتك المجنونة اللي بتضحكني", "تفهمك لطباعي الهادية والمتقلبة", "غيرتك الحلوة اللي بتثبتلي حبك", "تفاصيل كلامنا الصغير قبل النوم", "دعواتك الصادقة ليا دايماً", "إنك بتستحملي ضغط الشغل والظروف معايا", "وجودك اللي بيحسسني بأمان كامل", "قلبك الأبيض الصافي اللي مفيش زيه", "الملامح البريئة اللي بشوفها فيكي", "طريقة تفكيرك وعقلك الذكي", "روحك الطفولية اللي بتظهر معايا بس", "اهتمامك بأدق التفاصيل والتواريخ بيننا", "أكلتك المفضلة وضحكتك لما بتدوقيها", "طريقتك في مواساتي لما بكون زعلان", "إحساسك بيا من غير ما أتكلم نص كلمة", "شقاوتك وهزارك اللي بيملا حياتي فرحة", "ثقتك العمياء فيا وفي اختياراتي", "نبرة صوتك لما بتناديني بـ (ياسو)", "شكلك الجميل والراقي في كل مناسبة", "لأنك بتشوفي فيا حاجات حلوة مش عند حد", "وقوفك جنبي ضد أي حد يضايقني", "طيبتك مع أهلك ومع كل اللي حواليكي", "رسايلك المفاجئة اللي بتفرحني وسط اليوم", "طريقة زعلك الطفولية اللي بتخليني أصالحك فوراً", "ضحكتك من قلبك لما بنهزر سوا", "خوفك عليا من الهوا الطاير", "إنك بتشاركيني اهتماماتي وأفكاري", "وجودك بيخليني عايز أكون أحسن راجل", "طريقتك في التعبير عن حبك بالكلام والأفعال", "لأنك بتفهمي نظرات عيني من غير كلام", "اللمعة اللي في عينك لما بنتقابل", "لأنك أغلى وأجمل حاجة حصلت في دنيتي", "صراحتك معايا وثقتك اللي ملهاش حدود", "إنك بتعرفي تخليني أبتسم حتى في عز ضيقتي", "لأنك مش بس حبيبتي، انتِ بنتي وصاحبتي", "طاقتك الإيجابية اللي بتديهالي دايماً", "لأنك بتتحملي عيوبي قبل مميزاتي", "حضورك اللي بيلغي وجود أي حد تاني حواليكي", "طريقتك في الحفاظ على أسرارنا سوا", "لأنك بتخليني أحس إني ملك بوجودك جنبي", "وعودك الصادقة اللي بتطمن قلبي دايماً", "لأنك ببساطة شديدة.. (شهودتي الملكة) اللي قلبي اختارها تكمل معاه العمر كله"];
+
+        const container = document.getElementById('reasons-container');
+        reasonsList.forEach((reason, index) => {
+            const item = document.createElement('div');
+            item.className = 'bg-red-950/20 p-3 rounded-xl border border-red-500/10 flex items-center gap-3 hover:border-red-500/30 transition-all';
+            item.innerHTML = `<span class="bg-red-500/20 text-red-300 font-bold text-[10px] w-6 h-6 rounded-full flex items-center justify-center">${index + 1}</span><p class="text-gray-200 flex-1">${reason}</p>`;
+            container.appendChild(item);
+        });
+
+        const song1 = document.getElementById("song1");
+        song1.addEventListener("loadedmetadata", () => {
+            song1.currentTime = 80; // 80 ثانية = دقيقة و20 ثانية
+        });
     </script>
 </body>
 </html>
