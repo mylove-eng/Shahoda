@@ -121,7 +121,25 @@
             <i class="fa-solid fa-chevron-left text-gray-500 text-xs"></i>
         </div>
     </div>
+<div class="grid grid-cols-2 gap-3 mb-4">
 
+    <div onclick="sendRandomMessage('love')" class="bg-red-500/20 border border-red-500/30 rounded-2xl p-4 text-center cursor-pointer">
+        ❤️ رسالة حب
+    </div>
+
+    <div onclick="sendRandomMessage('miss')" class="bg-pink-500/20 border border-pink-500/30 rounded-2xl p-4 text-center cursor-pointer">
+        🥺 رسالة اشتياق
+    </div>
+
+    <div onclick="sendRandomMessage('sorry')" class="bg-orange-500/20 border border-orange-500/30 rounded-2xl p-4 text-center cursor-pointer">
+        💔 رسالة اعتذار
+    </div>
+
+    <div onclick="sendRandomMessage('anniversary')" class="bg-amber-500/20 border border-amber-500/30 rounded-2xl p-4 text-center cursor-pointer">
+        💍 رسالة ذكرى
+    </div>
+
+</div>
     <div class="text-center text-[10px] text-gray-500 pb-4">صُنع بحب من Yasso إلى Shahoda الملكة 💍</div>
 
 
@@ -210,7 +228,7 @@
                     <i class="fa-solid fa-heart text-pink-400 text-2xl animate-pulse"></i>
                 </div>
                 <audio controls id="song1" class="w-full">
-                    <source src="shahoda1.mp3" type="audio/mp3">
+                    <source src="songs/shahoda1.mp3" type="audio/mp3">
                 </audio>
             </div>
             <div class="bg-gradient-to-r from-purple-900/40 to-black/40 border border-purple-500/30 rounded-3xl p-4 shadow-xl">
@@ -222,7 +240,7 @@
                     <i class="fa-solid fa-music text-purple-400 text-2xl"></i>
                 </div>
                 <audio controls class="w-full">
-                    <source src="shahoda2.mp3" type="audio/mp3">
+                    <source src="songs/shahoda2.mp3" type="audio/mp3">
                 </audio>
             </div>
             <div class="bg-gradient-to-r from-amber-900/30 to-black/40 border border-amber-500/30 rounded-3xl p-4 shadow-xl">
@@ -234,7 +252,7 @@
                     <i class="fa-solid fa-crown text-amber-400 text-2xl"></i>
                 </div>
                 <audio controls class="w-full">
-                    <source src="shahoda3.mp3" type="audio/mp3">
+                    <source src="songs/shahoda3.mp3" type="audio/mp3">
                 </audio>
             </div>
         </div>
@@ -333,7 +351,46 @@
             const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             if (daysLeft <= 0) { document.getElementById("password-screen").style.display = "none"; }
         });
+const messages = {
+  love: [
+    "بحبك أوي يا ياسو ❤️",
+    "ربنا يخليك ليا يا روحي 🥺❤️",
+    "إنت أجمل حاجة حصلتلي 💍",
+    "وجودك في حياتي نعمة كبيرة ❤️"
+  ],
 
+  miss: [
+    "وحشتني أوي يا ياسو 🥺❤️",
+    "نفسي أكلمك دلوقتي 😔❤️",
+    "اليوم مش حلو من غير كلامك ❤️"
+  ],
+
+  sorry: [
+    "حقك عليا يا روحي ❤️",
+    "متزعلش مني 🥺❤️",
+    "آسفة لو ضايقتك بكلامي ❤️"
+  ],
+
+  anniversary: [
+    "كل سنة وإنت حبيبي ❤️",
+    "مبروك علينا سنة حب كاملة 💍",
+    "عقبال سنين كتير وإحنا سوا ❤️"
+  ]
+};
+
+function sendRandomMessage(type) {
+    const list = messages[type];
+
+    if (!list || list.length === 0) return;
+
+    const randomMessage =
+        list[Math.floor(Math.random() * list.length)];
+
+    const whatsappURL =
+        `https://wa.me/201205988710?text=${encodeURIComponent(randomMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+}
         const reasonsList = ["ضحكتك اللي بتنور يومي", "طريقتك في الاهتمام بيا وبكل تفاصيلي", "حنّيتك اللي ملهاش مثيل في الدنيا", "صبرك عليا في أوقات عصبيتي", "جمال عينيكي اللي بسرح فيه دايماً", "دعمك وتشجيعك ليا في كل خطوة", "صوتك اللي بيريح قلبي ونفسيتي", "جدعنتك وقوفك جنبي زي الراجل في الضهر", "طريقتك المجنونة اللي بتضحكني", "تفهمك لطباعي الهادية والمتقلبة", "غيرتك الحلوة اللي بتثبتلي حبك", "تفاصيل كلامنا الصغير قبل النوم", "دعواتك الصادقة ليا دايماً", "إنك بتستحملي ضغط الشغل والظروف معايا", "وجودك اللي بيحسسني بأمان كامل", "قلبك الأبيض الصافي اللي مفيش زيه", "الملامح البريئة اللي بشوفها فيكي", "طريقة تفكيرك وعقلك الذكي", "روحك الطفولية اللي بتظهر معايا بس", "اهتمامك بأدق التفاصيل والتواريخ بيننا", "أكلتك المفضلة وضحكتك لما بتدوقيها", "طريقتك في مواساتي لما بكون زعلان", "إحساسك بيا من غير ما أتكلم نص كلمة", "شقاوتك وهزارك اللي بيملا حياتي فرحة", "ثقتك العمياء فيا وفي اختياراتي", "نبرة صوتك لما بتناديني بـ (ياسو)", "شكلك الجميل والراقي في كل مناسبة", "لأنك بتشوفي فيا حاجات حلوة مش عند حد", "وقوفك جنبي ضد أي حد يضايقني", "طيبتك مع أهلك ومع كل اللي حواليكي", "رسايلك المفاجئة اللي بتفرحني وسط اليوم", "طريقة زعلك الطفولية اللي بتخليني أصالحك فوراً", "ضحكتك من قلبك لما بنهزر سوا", "خوفك عليا من الهوا الطاير", "إنك بتشاركيني اهتماماتي وأفكاري", "وجودك بيخليني عايز أكون أحسن راجل", "طريقتك في التعبير عن حبك بالكلام والأفعال", "لأنك بتفهمي نظرات عيني من غير كلام", "اللمعة اللي في عينك لما بنتقابل", "لأنك أغلى وأجمل حاجة حصلت في دنيتي", "صراحتك معايا وثقتك اللي ملهاش حدود", "إنك بتعرفي تخليني أبتسم حتى في عز ضيقتي", "لأنك مش بس حبيبتي، انتِ بنتي وصاحبتي", "طاقتك الإيجابية اللي بتديهالي دايماً", "لأنك بتتحملي عيوبي قبل مميزاتي", "حضورك اللي بيلغي وجود أي حد تاني حواليكي", "طريقتك في الحفاظ على أسرارنا سوا", "لأنك بتخليني أحس إني ملك بوجودك جنبي", "وعودك الصادقة اللي بتطمن قلبي دايماً", "لأنك ببساطة شديدة.. (شهودتي الملكة) اللي قلبي اختارها تكمل معاه العمر كله"];
 
         const container = document.getElementById('reasons-container');
